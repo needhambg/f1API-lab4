@@ -1,6 +1,6 @@
 import requests
 from pydantic import ValidationError
-from models import Meeting, Session, Position, Menu, DriverMenu
+from models import Meeting, Session, Position, Menu, DriverMenu, CircuitMenu
 base_api_url = "https://api.openf1.org/v1/"
 loopnum = 0
 while loopnum != 1:
@@ -8,18 +8,31 @@ while loopnum != 1:
     #Menu
     usrchc = Menu()
     drvrchc = DriverMenu()
-    #drivernum = int(input("Input a Driver Number: "))
-    #meeting = requests.get(f"{base_api_url}meetings?year=2023&circuit_short_name=Singapore")
-    #data = meeting.json()
-    #singapore = Meeting(**data[0])
-    #result = requests.get(f"{base_api_url}sessions?meeting_key={singapore.meeting_key}&session_type=Race")
-    #sess_data = result.json()
-    #session = Session(**sess_data[0])
-    #result2 = requests.get(f"{base_api_url}position?session_key={session.session_key}&driver_number={drivernum}")
-    #data2 = result2.json()
-    #position = Position()
-    #print(position.position)
-    #Predict Drivers Next Race at A Circuit
-        #Give User List of Drivers,take input
-    #Find A Driver's Best Race, Quali, Sprint, Or Practice
-    #Print Last Two Races
+    
+    #Switch Case
+    match usrchc:
+        case 1:
+            #1. Predict Drivers Next Race At A Circuit 
+            crctchc = CircuitMenu()
+            meeting = requests.get(f"{base_api_url}meetings?year=2023&circuit_short_name={crctchc}")
+            meeting2 = requests.get(f"{base_api_url}meetings?year=2024&circuit_short_name={crctchc}")
+            data = meeting.json()
+            r1 = Meeting(**data[0])
+            print(r1.meeting_key)
+            data2 = meeting2.json()
+            r2 = Meeting(**data2[0])
+            print(r2.meeting_key)
+            #race = Meeting(**data[0])
+            #result = requests.get(f"{base_api_url}sessions?meeting_key={race.meeting_key}&session_type=Race")
+            #sess_data = result.json()
+            #session = Session(**sess_data[0])
+            #result2 = requests.get(f"{base_api_url}position?session_key={session.session_key}&driver_number={drvrchc}")
+            #position = Position()
+            #print(position.position)
+            
+        case 2:
+            #2. Find A Driver's Best At A Circuit
+            print
+        case 3:
+            #3. Print Last Two Races
+            print
