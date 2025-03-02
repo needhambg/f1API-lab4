@@ -64,7 +64,7 @@ circuitlist = {
 }
 def Menu():
     print("-----------F1 API-----------")
-    usrinput = int(input("1. Predict Drivers Next Race At A Circuit\n2. Find A Driver's Best At A Circuit\n3. Print Last Two Races\n--------------------------\n"))
+    usrinput = int(input("1. Predict Drivers Next Race At A Circuit\n2. Find A Driver's Best At A Circuit\n3. Print Last Two Races\n4. Exit\n--------------------------\n"))
     return usrinput
 def DriverMenu():
     drvrlpnum = 0
